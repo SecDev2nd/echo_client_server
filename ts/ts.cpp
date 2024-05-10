@@ -135,17 +135,17 @@ void recvThread(int sd)
 		fflush(stdout);
 		if (param.echo)
 		{
-			std::string server_side_message = "Server) " + std::string(buf);
+			std::string ssm = "[Client " + std::to_string(sd) + " send] " + std::string(buf);
 			if (param.broadcast)
 			{
 				for (int client_sd : global_client_sockets)
 				{
-					::send(client_sd, buf, res, 0);
+					::send(client_sd, ssm.c_str(), ssm.size(), 0);
 				}
 			}
 			else
 			{
-				res = ::send(sd, buf, res, 0);
+				res = ::send(sd, ssm.c_str(), ssm.size(), 0);
 				if (res == 0 || res == -1)
 				{
 					fprintf(stderr, "send return %ld", res);
