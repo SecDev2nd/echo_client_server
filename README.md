@@ -17,5 +17,7 @@ sample : echo-server 1234 -e -b
   
 - 따라서 이런경우 탐색시 이진탐색을 사용하는 set,map중 하나를 선택해서 사용, 여기서는 value가 필요없으므로 set을 사용하자  
 
+
+- lock_guard를 사용해서 안전하게 스레드 관리를 하자
 Preview)  
 ![alt text](image.png)
